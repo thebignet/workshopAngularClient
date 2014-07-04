@@ -78,36 +78,14 @@
             </div>
             <div class="col-md-6">
                 <ul class="list-group">
-                    <li class="list-group-item not-angular">
+                    <li class="list-group-item" ng-repeat="piou in pious | orderBy:'date':true">
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object" ng-src="http://www.gravatar.com/avatar/{{user.id | gravatar}}"/>
+                                <img class="media-object" ng-src="http://www.gravatar.com/avatar/{{piou.id | gravatar}}"/>
                             </a>
                             <div class="media-body">
-                                <p><strong class="not-angular">thebignet@gmail.com</strong> - <span class="not-angular">1 minute ago</span></p>
-                                <p><span class="not-angular">Ceci est mon deuxième piou sans Angular</span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item not-angular">
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object not-angular" ng-src="http://www.gravatar.com/avatar/{{user.id | gravatar}}"/>
-                            </a>
-                            <div class="media-body">
-                                <p><strong class="not-angular">thebignet@gmail.com</strong> - <span class="not-angular">1 hour ago</span></p>
-                                <p><span class="not-angular">Ceci est mon premier piou sans Angular</span></p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item not-angular">
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object not-angular" ng-src="http://www.gravatar.com/avatar/{{user.id | gravatar}}"/>
-                            </a>
-                            <div class="media-body">
-                                <p><strong class="not-angular">ludovic.lhours@gmail.com</strong> - <span class="not-angular"></span></p>
-                                <p><span class="not-angular">Bla bla</span></p>
+                                <p><strong ng-bind="piou.id"></strong> - <span class="not-angular">1 minute ago</span></p>
+                                <p><span ng-bind="piou.message"></span></p>
                             </div>
                         </div>
                     </li>
