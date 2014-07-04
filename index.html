@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <label for="newUser">Select other user</label>
                         <input type="text" id="newUser" placeholder="Utilisateur" class="form-control" ng-model="newUser">
-                        <button class="not-angular">Change user</button>
+                        <button ng-click="changeUser()">Change user</button>
                     </div>
 					</form>
                 </div>
@@ -81,10 +81,10 @@
                     <li class="list-group-item" ng-repeat="piou in pious | orderBy:'date':true">
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object" ng-src="http://www.gravatar.com/avatar/{{piou.id | gravatar}}"/>
+                                <img class="media-object" ng-src="http://www.gravatar.com/avatar/{{piou.userId | gravatar}}"/>
                             </a>
                             <div class="media-body">
-                                <p><strong ng-bind="piou.id"></strong> - <span class="not-angular">1 minute ago</span></p>
+                                <p><strong ng-bind="piou.userId"></strong> - <span class="not-angular">1 minute ago</span></p>
                                 <p><span ng-bind="piou.message"></span></p>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="not-angular">
                             <ul class="list-group">
-                                <li class="list-group-item" ng-repeat="following in followings">
+                                <li class="list-group-item" ng-repeat="following in user.following">
                                     <span class="badge not-angular"><span class="glyphicon glyphicon-remove"></span></span>
                                     <span>
                                         <img width="25px" ng-src="http://www.gravatar.com/avatar/{{following.id | gravatar}}"/>
@@ -154,6 +154,7 @@
     <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap.min.js"></script>
     <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
     <script src="bower_components/angular-md5/angular-md5.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
 
     <script src="js/piouter.js"></script>
   </body>

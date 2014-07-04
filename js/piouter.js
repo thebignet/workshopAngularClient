@@ -1,18 +1,28 @@
-var app = angular.module('app', ['ui.bootstrap','angular-md5']);
+var app = angular.module('app', ['ui.bootstrap','angular-md5','ngResource']);
 app.constant('userId', 'thebignet@gmail.com');
+app.constant('apiRoot', 'http://workshop-angular-server.herokuapp.com');
 
-app.controller('MainCtrl', function ($scope, $log, userId) {
-    $scope.user = {id:userId};
+app.controller('MainCtrl', function ($scope, $log, userId, $resource, apiRoot) {
     $scope.message = 'Message';
-    $scope.newUser = '';
     $scope.userToFollow = '';
-    $scope.pious = [
-        {id:'thebignet@gmail.com',message:'Salut les gens',date:new Date()},
-        {id:'machin@gmail.com',message:'Bonjour',date:new Date()},
-        {id:'thebignet@gmail.com',message:'Kikou lol',date:new Date()}
-    ];
-    $scope.showUser = function(user){alert(user);}
     $scope.followers = [{id:'thebignet@gmail.com'},{id:'machin@gmail.com'}];
-    $scope.followings = [{id:'ludovic.lhours@gmail.com'},{id:'machin@gmail.com'}];
+
+    /* Resources */
+    var Piou = $resource(apiRoot + '/piou/:userId', {userId:'@userId'});
+    var User = $resource(apiRoot + '/user/:userId/:action/:actionId', {userId:'@userId'});
+    var Follower = $resource(apiRoot + '/follower/:userId', {userId:'@userId'});
+
+    /* Récupération des informations */
+    $scope.user = User.get({userId:userId});
+    $scope.pious = Piou.query({userId:userId});
+    $scope.followers = Follower.query({userId:userId});
+
+    /* Modification de l'utilisateur */
+    $scope.changeUser = function(){
+        $scope.user = User.get({userId:$scope.newUser});
+        $scope.pious = Piou.query({userId:$scope.newUser});
+        $scope.followers = Follower.query({userId:newUser});
+        $scope.newUser = '';
+    }
 
 });
