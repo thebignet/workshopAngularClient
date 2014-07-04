@@ -11,4 +11,6 @@ app.controller('MainCtrl', function ($scope, $log, userId) {
         {id:'machin@gmail.com',message:'Bonjour',date:new Date()},
         {id:'thebignet@gmail.com',message:'Kikou lol',date:new Date()}
     ];
+    $scope.showUser = function(user){alert(user);}
+
 });
