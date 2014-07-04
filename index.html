@@ -46,7 +46,7 @@
 					<form>
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img width="50px" class="media-object not-angular" src="http://www.gravatar.com/avatar/03f0fc6173fd42091768a5370746b2a6"/>
+                            <img width="50px" class="media-object" ng-src="http://www.gravatar.com/avatar/{{user.id | gravatar}}"/>
                         </a>
                         <div class="media-body">
                             <p><strong ng-bind="user.id"></strong></p>
@@ -81,7 +81,7 @@
                     <li class="list-group-item not-angular">
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object not-angular" src="http://www.gravatar.com/avatar/03f0fc6173fd42091768a5370746b2a6"/>
+                                <img class="media-object" ng-src="http://www.gravatar.com/avatar/{{user.id | gravatar}}"/>
                             </a>
                             <div class="media-body">
                                 <p><strong class="not-angular">thebignet@gmail.com</strong> - <span class="not-angular">1 minute ago</span></p>
@@ -92,7 +92,7 @@
                     <li class="list-group-item not-angular">
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object not-angular" src="http://www.gravatar.com/avatar/03f0fc6173fd42091768a5370746b2a6"/>
+                                <img class="media-object not-angular" ng-src="http://www.gravatar.com/avatar/{{user.id | gravatar}}"/>
                             </a>
                             <div class="media-body">
                                 <p><strong class="not-angular">thebignet@gmail.com</strong> - <span class="not-angular">1 hour ago</span></p>
@@ -103,7 +103,7 @@
                     <li class="list-group-item not-angular">
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object not-angular" src="http://www.gravatar.com/avatar/7cbaae7e98ad29ba930f7f7aa0ac42aa"/>
+                                <img class="media-object not-angular" ng-src="http://www.gravatar.com/avatar/{{user.id | gravatar}}"/>
                             </a>
                             <div class="media-body">
                                 <p><strong class="not-angular">ludovic.lhours@gmail.com</strong> - <span class="not-angular"></span></p>
@@ -131,7 +131,7 @@
                                 <li class="list-group-item" class="not-angular">
                                     <span class="badge not-angular"><span class="glyphicon glyphicon-remove"></span></span>
                                     <span class="not-angular">
-                                        <img width="25px" class="not-angular" src="http://www.gravatar.com/avatar/7cbaae7e98ad29ba930f7f7aa0ac42aa"/>
+                                        <img width="25px" class="not-angular" ng-src="http://www.gravatar.com/avatar/{{user.id | gravatar}}"/>
                                         ludovic.lhours@gmail.com
                                     </span>
                                 </li>
@@ -149,7 +149,7 @@
                             <ul class="list-group">
                                 <li class="list-group-item not-angular">
                                     <span class="not-angular">
-                                        <img width="25px" class="not-angular" src="http://www.gravatar.com/avatar/f35c7907538eb4c3b8a16c5ece3c67f9"/>
+                                        <img width="25px" class="not-angular" ng-src="http://www.gravatar.com/avatar/{{user.id | gravatar}}"/>
                                         machin@gmail.com
                                     </span>
                                 </li>
@@ -175,6 +175,7 @@
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap.min.js"></script>
     <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-md5/angular-md5.min.js"></script>
 
     <script src="js/piouter.js"></script>
   </body>
