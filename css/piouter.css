@@ -1,0 +1,18 @@
+body {
+  padding-top: 30px;
+}
+.starter-template {
+  padding: 40px 15px;
+}
+.too-long, .almost-full {
+    font-weight: bold;
+}
+.too-long {
+    color: red;
+}
+.almost-full {
+    color: orange;
+}
+.not-angular{
+    background-color: #EBE1A0;
+}
