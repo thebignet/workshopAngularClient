@@ -12,5 +12,7 @@ app.controller('MainCtrl', function ($scope, $log, userId) {
         {id:'thebignet@gmail.com',message:'Kikou lol',date:new Date()}
     ];
     $scope.showUser = function(user){alert(user);}
+    $scope.followers = [{id:'thebignet@gmail.com'},{id:'machin@gmail.com'}];
+    $scope.followings = [{id:'ludovic.lhours@gmail.com'},{id:'machin@gmail.com'}];
 
 });
