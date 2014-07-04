@@ -43,18 +43,18 @@
 		<div class="row">
 			<div class="col-md-3">
                 <div class="input-group well">
-					<form class="not-angular">
+					<form>
                     <div class="media">
                         <a class="pull-left" href="#">
                             <img width="50px" class="media-object not-angular" src="http://www.gravatar.com/avatar/03f0fc6173fd42091768a5370746b2a6"/>
                         </a>
                         <div class="media-body">
-                            <p><strong class="not-angular">thebignet@gmail.com</strong></p>
+                            <p><strong ng-bind="user.id"></strong></p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="newUser">Select other user</label>
-                        <input type="text" id="newUser" placeholder="Utilisateur" class="form-control not-angular">
+                        <input type="text" id="newUser" placeholder="Utilisateur" class="form-control" ng-model="newUser">
                         <button class="not-angular">Change user</button>
                     </div>
 					</form>
@@ -63,14 +63,14 @@
                     <form>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea style="margin-bottom:10px;" class="form-control not-angular" id="message" placeholder="Message"></textarea>
+                            <textarea style="margin-bottom:10px;" class="form-control" id="message" placeholder="Message" ng-model="message"></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-default not-angular">
                                 <span class="glyphicon glyphicon glyphicon-pencil"></span>&nbsp;Send
                             </button>
-                            <span class="not-angular">
-                                (<span class="not-angular">140</span>&nbsp;caracters left)
+                            <span>
+                                (<span>{{140 - message.length}}</span>&nbsp;caracters left)
                             </span>
                         </div>
                     </form>
@@ -122,7 +122,7 @@
                         <div>
                             <div class="form-group">
                                 <label for="userToFollow">Follow someone :</label>
-                                <input type="text" id="userToFollow" placeholder="Utilisateur" class="form-control not-angular">
+                                <input type="text" id="userToFollow" placeholder="Utilisateur" class="form-control" ng-model="userToFollow">
                                 <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
                             </div>
                         </div>
