@@ -14,14 +14,16 @@ app.controller('MainCtrl', function ($scope, $log, userId, $resource, apiRoot) {
 
     /* Récupération des informations */
     $scope.user = User.get({userId:userId});
-    $scope.pious = Piou.query({userId:userId});
-    $scope.followers = Follower.query({userId:userId});
+    $scope.$watch('user',function(user){
+        if(user.$resolved){
+            $scope.pious = Piou.query({userId:user.id});
+            $scope.followers = Follower.query({userId:user.id});
+        }
+    },true);
 
     /* Modification de l'utilisateur */
     $scope.changeUser = function(){
         $scope.user = User.get({userId:$scope.newUser});
-        $scope.pious = Piou.query({userId:$scope.newUser});
-        $scope.followers = Follower.query({userId:newUser});
         $scope.newUser = '';
     }
 
