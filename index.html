@@ -54,8 +54,8 @@
                     </div>
                     <div class="form-group">
                         <label for="newUser">Select other user</label>
-                        <input type="text" id="newUser" placeholder="Utilisateur" class="form-control" ng-model="newUser">
-                        <button ng-click="changeUser()">Change user</button>
+                        <input type="text" id="newUser" placeholder="Utilisateur" class="form-control" ng-model="newUser" typeahead="user as user.id for user in getUsersMatching($viewValue)" typeahead-on-select="changeUser($item, $model, $label)" typeahead-loading="loadingUsers" typeahead-min-length="2">
+                        <i ng-show="loadingUsers" class="glyphicon glyphicon-refresh"></i>
                     </div>
 					</form>
                 </div>
@@ -100,10 +100,7 @@
                         <div>
                             <div class="form-group">
                                 <label for="userToFollow">Follow someone :</label>
-                                <input type="text" id="userToFollow" placeholder="Utilisateur" class="form-control" ng-model="userToFollow">
-                                <button type="submit" class="btn btn-default" ng-click="follow(userToFollow)">
-                                    Follow
-                                </button>
+                                <input type="text" id="userToFollow" ng-model="userToFollow" placeholder="Utilisateur" typeahead="user as user.id for user in getFollowersMatching($viewValue)" typeahead-loading="loadingLocations" typeahead-min-length="2" typeahead-on-select="follow($item, $model, $label)" class="form-control">
                                 <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
                             </div>
                         </div>

@@ -11,7 +11,9 @@ app.controller('MainCtrl', function ($scope, $log, userId, $resource, apiRoot) {
     var Piou = $resource(apiRoot + '/piou/:userId', {userId:'@userId'});
     var User = $resource(apiRoot + '/user/:userId/:action/:actionId', {userId:'@userId',actionId:'@actionId'},{
         follow: {method:'PUT',params:{action:'follow'}},
-        unfollow: {method:'DELETE',params:{action:'follow'}}
+        unfollow: {method:'DELETE',params:{action:'follow'}},
+        matching: {method:'GET',params:{action:'filter',filterFollowing:false},isArray:true},
+        matchingFollower: {method:'GET',params:{action:'filter',filterFollowing:true},isArray:true}
     });
     var Follower = $resource(apiRoot + '/follower/:userId', {userId:'@userId'});
 
@@ -25,9 +27,9 @@ app.controller('MainCtrl', function ($scope, $log, userId, $resource, apiRoot) {
     },true);
 
     /* Modification de l'utilisateur */
-    $scope.changeUser = function(){
-        $scope.user = User.get({userId:$scope.newUser});
-        $scope.newUser = '';
+    $scope.changeUser = function(newUser){
+        $scope.user = User.get({userId:newUser.id});
+        $scope.newUser = null;
     };
 
     /* Envoi du message */
@@ -46,12 +48,12 @@ app.controller('MainCtrl', function ($scope, $log, userId, $resource, apiRoot) {
 
     /* Follow/unfollow */
     $scope.follow = function(userToFollow){
-        User.follow({userId:$scope.user.id,actionId:userToFollow},function(ret, putResponseHeaders){
+        User.follow({userId:$scope.user.id,actionId:userToFollow.id},function(ret, putResponseHeaders){
             if(ret.code==0){
-                if(_.findWhere($scope.user.following,{id:userToFollow})==undefined){
-                    $scope.user.following.push({id:userToFollow});
+                if(_.findWhere($scope.user.following,userToFollow)==undefined){
+                    $scope.user.following.push(userToFollow);
                 }
-                $scope.userToFollow='';
+                $scope.userToFollow=null;
             } else {
                 alert(ret.message);
             }
@@ -63,5 +65,19 @@ app.controller('MainCtrl', function ($scope, $log, userId, $resource, apiRoot) {
             $scope.user.following=angular.copy(newFollowers);
         });
     };
+
+    /* Filtre sur les utilisateurs */
+    $scope.getUsersMatching = function(val){
+        return User.matching({userId:$scope.user.id,actionId:val}).$promise.then(function(res){
+            return res;
+        });
+    };
+
+    $scope.getFollowersMatching = function(val){
+        return User.matchingFollower({userId:$scope.user.id,actionId:val}).$promise.then(function(res){
+            return res;
+        });
+    };
+
 
 });
