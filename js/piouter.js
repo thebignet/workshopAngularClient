@@ -9,7 +9,10 @@ app.controller('MainCtrl', function ($scope, $log, userId, $resource, apiRoot) {
 
     /* Resources */
     var Piou = $resource(apiRoot + '/piou/:userId', {userId:'@userId'});
-    var User = $resource(apiRoot + '/user/:userId/:action/:actionId', {userId:'@userId'});
+    var User = $resource(apiRoot + '/user/:userId/:action/:actionId', {userId:'@userId',actionId:'@actionId'},{
+        follow: {method:'PUT',params:{action:'follow'}},
+        unfollow: {method:'DELETE',params:{action:'follow'}}
+    });
     var Follower = $resource(apiRoot + '/follower/:userId', {userId:'@userId'});
 
     /* Récupération des informations */
@@ -38,6 +41,26 @@ app.controller('MainCtrl', function ($scope, $log, userId, $resource, apiRoot) {
             } else {
                 alert(ret.message);
             }
+        });
+    };
+
+    /* Follow/unfollow */
+    $scope.follow = function(userToFollow){
+        User.follow({userId:$scope.user.id,actionId:userToFollow},function(ret, putResponseHeaders){
+            if(ret.code==0){
+                if(_.findWhere($scope.user.following,{id:userToFollow})==undefined){
+                    $scope.user.following.push({id:userToFollow});
+                }
+                $scope.userToFollow='';
+            } else {
+                alert(ret.message);
+            }
+        });
+    };
+    $scope.unfollow = function(userToUnfollow){
+        User.unfollow({userId:$scope.user.id,actionId:userToUnfollow.id},function(){
+            var newFollowers = _.without($scope.user.following,userToUnfollow);
+            $scope.user.following=angular.copy(newFollowers);
         });
     };
 
