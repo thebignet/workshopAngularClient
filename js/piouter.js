@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.bootstrap','angular-md5','ngResource']);
+var app = angular.module('app', ['ui.bootstrap','angular-md5','ngResource','angularMoment']);
 app.constant('userId', 'thebignet@gmail.com');
 app.constant('apiRoot', 'http://workshop-angular-server.herokuapp.com');
 

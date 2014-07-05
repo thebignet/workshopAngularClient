@@ -84,7 +84,7 @@
                                 <img class="media-object" ng-src="http://www.gravatar.com/avatar/{{piou.userId | gravatar}}"/>
                             </a>
                             <div class="media-body">
-                                <p><strong ng-bind="piou.userId"></strong> - <span class="not-angular">1 minute ago</span></p>
+                                <p><strong ng-bind="piou.userId"></strong> - <span am-time-ago="piou.date"></span></p>
                                 <p><span ng-bind="piou.message"></span></p>
                             </div>
                         </div>
@@ -158,6 +158,7 @@
     <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
     <script src="bower_components/angular-md5/angular-md5.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
 
     <script src="js/piouter.js"></script>
   </body>
