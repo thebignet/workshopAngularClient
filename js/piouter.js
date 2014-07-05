@@ -25,6 +25,20 @@ app.controller('MainCtrl', function ($scope, $log, userId, $resource, apiRoot) {
     $scope.changeUser = function(){
         $scope.user = User.get({userId:$scope.newUser});
         $scope.newUser = '';
-    }
+    };
+
+    /* Envoi du message */
+    $scope.send = function(){
+        var params = {userId:$scope.user.id,message:$scope.message,date:Date.now()};
+        var monPiou = new Piou(params);
+        monPiou.$save(function(ret, putResponseHeaders){
+            if(ret.code==0){
+                $scope.pious.push(params);
+                $scope.message='';
+            } else {
+                alert(ret.message);
+            }
+        });
+    };
 
 });
