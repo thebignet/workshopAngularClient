@@ -69,7 +69,7 @@
                             <button type="submit" class="btn btn-default" ng-click="send()">
                                 <span class="glyphicon glyphicon glyphicon-pencil"></span>&nbsp;Send
                             </button>
-                            <span>
+                            <span ng-class="{'too-long': message.length > 140, 'almost-full': message.length >= 120 && message.length <= 140}">
                                 (<span>{{140 - message.length}}</span>&nbsp;caracters left)
                             </span>
                         </div>
