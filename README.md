@@ -8,7 +8,7 @@ Nous allons mettre en application AngularJS en créant un clone de Twitter appel
 
     git clone https://github.com/thebignet/workshopAngular.git
 
-Le client est dans le répertoire **client**.  La documentation de l'API est disponible [ici](https://github.com/thebignet/workshopAngularServer)
+La documentation de l'API est disponible [ici](https://github.com/thebignet/workshopAngularServer)
 
 ----------
 Etapes de la construction
