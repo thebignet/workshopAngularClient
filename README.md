@@ -8,7 +8,7 @@ Nous allons mettre en application AngularJS en créant un clone de Twitter appel
 
     git clone https://github.com/thebignet/workshopAngular.git
 
-La documentation de l'API est disponible [ici](https://github.com/thebignet/workshopAngularServer)
+La documentation de l'API est disponible [ici](https://github.com/thebignet/workshopAngularServer).  Si vous êtes trop impatients pour faire ce workshop, [voici à quoi ressemble l'application finale](http://thebignet.github.io/workshopAngularClient/).
 
 ----------
 Etapes de la construction
